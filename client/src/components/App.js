@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import AboutUs from './AboutUs';
 import Header from './Header';
+import Login from './Login'
 
 function App() {
   
@@ -45,6 +46,9 @@ function App() {
       <Switch>
         <Route exact path="/" >
           <AboutUs />
+          </Route>
+          <Route exact path="/login">
+          <Login />
           </Route>
       </Switch>
       </BrowserRouter>
