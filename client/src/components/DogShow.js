@@ -1,10 +1,21 @@
-// import { useParams } from "react-router-dom"
-function DogShow({dog, handleClick}){
+    import styled from "styled-components"
+    // import {useState, useEffect} from "react"
 
-    // const params = useParams();
-    // console.log(params)
+    
+
+    function DogShow({dog}){
+
+        // const [getDog, setGetDog] = useState(null)
+        // useEffect(() => {
+        //     fetch(`/dogs/${dogId}`)
+        //       .then((r) => r.json())
+        //       .then((getDog) => setGetDog(getDog));
+        //   }, [dogId]);
+          
+        //   console.log(getDog)
 
     return(
+        <>
         <div>
             <div className="card">
   <div className="image">
@@ -13,15 +24,16 @@ function DogShow({dog, handleClick}){
    </div>
    <div className="details">
    <h2>Gender: {dog.age}</h2>
-   <h3>DOB: {dog.dob}</h3>
+   <h2>DOB: {dog.dob}</h2>
    <p className="card_description">About Me: {dog.bio}</p>
   <h3>vaccinated: {dog.vaccinated ?  'yes' : 'no'}</h3>
-  <h2>{dog.adopted ? <b>'Sorry, I am adopted already'</b> : <button onClick={handleClick}className="card_btn">Adopt Me :)</button>}</h2>
+  <h2>{dog.adopted ? <b>'Sorry, I am adopted already'</b> : <button className="card_btn">Adopt Me :)</button>}</h2>
   </div>
 
   </div>
   
         </div>
+        </>
     )
 }
 

@@ -1,41 +1,73 @@
 import {useState} from 'react'
 // import { useNavigate } from "react-router-dom";
 
-function Login({setUser}) {
 
+function Login() {
+
+    // const [username, setUsername] = useState("")
+    // const [password, setPassword] = useState("")
+       const [newUser, setNewUser] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        location: "",
+        password: ""
+      })
+    
     // const navigate = useNavigate()
+    const [signed, setSigned] = useState(false)
 
-    const [loginData, setLoginData] = useState({
-        username: '',
-        password: ''
-    })
+    function handleUserForm (e) {
+        setNewUser({...newUser, [e.target.name] : e.target.value})
+      }
+   
 
-    function changeLoginData(e){
-        setLoginData({
-            ...loginData, 
-            [e.target.name]: e.target.value
-        })
-    }
-
-    // function submitLoginData (e) {
-    //     e.preventDefault() 
-
+    // function handleSubmit(e){
+    //     e.preventDefault()
+        
     //     fetch('/login', {
-    //         method: 'POST',
+    //         method: "POST",
     //         headers: {
-    //             'Content-Type': 'application/json'
+    //             "Content-Type": "application/json",
     //         },
-    //         body: JSON.stringify(loginData)
+    //         body: JSON.stringify({username, password}),
+
     //     })
-    //     .then(res => {
-    //         if (res.ok) {
-    //             res.json().then(jsonData => {
-    //                 setUser(jsonData)
-    //                 navigate('/dogs')
-    //             })
-    //         }
-    //     })
+    //     .then(response => {if (response.ok) {
+    //       response.json().then((data) => {
+    //         onLogin(data)
+    //         setUsername("")
+    //         setPassword("")
+    //         navigate('/dogs')});
+    //     } else {
+    //       alert("Not a valid login.")
+    //     }});
     // }
+    function handleSignUp (e) {
+        e.preventDefault()
+        fetch('http://localhost:3000/users', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newUser)
+        })
+        .then(r => r.json())
+        .then(data => {
+          console.log(data)
+          setNewUser({
+            name: "",
+            email: "",
+            phone: "",
+            location: "",
+            password: ""
+          })
+          setSigned(true)
+        })
+      }
+    
+
+    
 
     return(
         <>
@@ -43,30 +75,31 @@ function Login({setUser}) {
         <h1>Login</h1>
         <form>
           <div>
-            <input onChange={changeLoginData} type="text" name="username" placeholder="Username" />
+            <input  type="text" name="username" placeholder="Username" />
           </div>
           <div>
-            <input onChange={changeLoginData} type="password" name="password" placeholder="Password" />
+            <input  type="password" name="password" placeholder="Password" />
           </div>
           <input type="submit" value="Submit" />
         </form>
       </div>
        <div>
+           
        <h1>Sign Up</h1>
        <form>
          <div>
-           <input type="text" name="name" placeholder="Name" />
+           <input value={newUser.name} type="text" name="name" placeholder="Name" />
          </div>
          <div>
-           <input type="password" name="email" placeholder="Email" />
+           <input value={newUser.email} type="text" name="email" placeholder="Email" />
          </div>
          <div>
-           <input type="password" name="password" placeholder="Password" />
+           <input value={newUser.password_digest} type="password" name="password" placeholder="Password" />
          </div>
          <div>
            <input type="password" name="password" placeholder="Password Confirmation" />
          </div>
-         <input type="submit" value="Submit" />
+         <input onSubmit={handleSignUp} type="submit" value="Submit" />
        </form>
      </div> 
 

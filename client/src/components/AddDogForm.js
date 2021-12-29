@@ -66,7 +66,7 @@ function AddDogForm({dog}){
                     <option value="Female">Female</option>
                  </select>
             </label>
-             :Breed<br />
+             :Gender<br />
                 
             <button onClick={handleSubmit} type="submit" value="Submit">Submit</button>
         </form>

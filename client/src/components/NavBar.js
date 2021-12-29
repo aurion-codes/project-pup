@@ -1,15 +1,14 @@
 import {NavLink} from 'react-router-dom'
 
 function NavBar(){
-
-    const linkStyles = {
+    
+      const linkStyles = {
         display: "inline-block",
-        width: "50px",
+        width: "160px",
         padding: "12px",
         margin: "0 6px 6px",
-        background: "blue",
-        textDecoration: "none",
-        color: "white",
+        textDecoration:"none",
+        color: "black",
       };
       
 
