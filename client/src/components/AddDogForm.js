@@ -60,14 +60,15 @@ function AddDogForm({dog}){
                 <input type="text" name="breed" onChange={handleChange}/>
             </label>
             <label>
-                Breed:<br/>
-                <input type="text" name="dob"  onChange={handleChange}/>
+                Image:<br/>
+                <select>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                 </select>
             </label>
-            <label>
-                Image:<br />
-                <input type="text" name="breed" onChange={handleChange}/>
-            </label>
-            <input onClick={handleSubmit} type="submit" value="Submit" />
+             :Breed<br />
+                
+            <button onClick={handleSubmit} type="submit" value="Submit">Submit</button>
         </form>
         </>
     )
