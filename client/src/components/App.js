@@ -6,6 +6,7 @@ import AboutUs from './AboutUs';
 import Header from './Header';
 import Login from './Login'
 import DogsPage from './DogsPage'
+import AddDogForm from './AddDogForm';
 
 function App() {
   
@@ -53,6 +54,9 @@ function App() {
         </Route>
         <Route exact path="/dogs">
             <DogsPage dogs={dogList}/>
+        </Route>
+        <Route exaxt path="/dog-form">
+          <AddDogForm />
         </Route>
       </Switch>
       </BrowserRouter>

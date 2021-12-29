@@ -1,12 +1,12 @@
-import React, {useState} from 'react'
-// import {useNavigate} from "react";
+import {useState} from 'react'
+// import { useNavigate } from "react-router-dom";
 
 function Login({setUser}) {
 
     // const navigate = useNavigate()
 
     const [loginData, setLoginData] = useState({
-        email: '',
+        username: '',
         password: ''
     })
 
@@ -31,7 +31,7 @@ function Login({setUser}) {
     //         if (res.ok) {
     //             res.json().then(jsonData => {
     //                 setUser(jsonData)
-    //                 navigate('/projects')
+    //                 navigate('/dogs')
     //             })
     //         }
     //     })

@@ -44,6 +44,13 @@ function NavBar(){
         >
             Dogs
         </NavLink>
+        <NavLink 
+            to="/dog-form"
+            exact
+            style={linkStyles}
+        >
+            AddDog
+        </NavLink>
         </>
     ) 
 
