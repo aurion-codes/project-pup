@@ -11,6 +11,7 @@ function NavBar(){
         textDecoration: "none",
         color: "white",
       };
+      
 
     return (
 
@@ -35,6 +36,13 @@ function NavBar(){
             }}
         >
           About Us
+        </NavLink>
+        <NavLink 
+            to="/dogs"
+            exact
+            style={linkStyles}
+        >
+            Dogs
         </NavLink>
         </>
     ) 

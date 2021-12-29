@@ -5,6 +5,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import AboutUs from './AboutUs';
 import Header from './Header';
 import Login from './Login'
+import DogsPage from './DogsPage'
 
 function App() {
   
@@ -46,10 +47,13 @@ function App() {
       <Switch>
         <Route exact path="/" >
           <AboutUs />
-          </Route>
-          <Route exact path="/login">
-          <Login />
-          </Route>
+        </Route>
+        <Route exact path="/login">
+          <Login setUser={setUsers}/>
+        </Route>
+        <Route exact path="/dogs">
+            <DogsPage dogs={dogList}/>
+        </Route>
       </Switch>
       </BrowserRouter>
 
