@@ -1,9 +1,10 @@
 import { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 
 function AddDogForm({dog}){
 
     
-
+    const history = useNavigate();
     const [uploadDog, setUploadDog] = useState({
 
         name:"",
