@@ -10,36 +10,37 @@ function AddDogForm({dog}){
         gender:"",
         breed:"",
         dob:"",
+        vaccinated:"",
         img_url:""
 
     })
 
-    function handleChange(e){
-        setUploadDog({
-            ...uploadDog, 
-            [e.target.name]: e.target.value
-        })
-    }
+    // function handleChange(e){
+    //     setUploadDog({...uploadDog, [e.target.name]: e.target.value})
+    // }
 
 
     function handleSubmit(e){
         e.preventDefault();
+
         fetch("/dogs", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name:"",
+            name:"", 
             gender:"",
             breed:"",
             dob:"",
+            vaccinated:"",
             img_url:""
 
           }),
         })
-          .then((r) => r.json())
-          .then((addDog) => setAddDog(addDog));
+          .then(() => {
+            console.log(' new dog added')
+          })     
       }
 
 
@@ -48,28 +49,37 @@ function AddDogForm({dog}){
 
             <h1>Add Your Pup </h1>
         <form>
-            <label>
-                <input type="text" name="Name" onChange={handleChange}/>
+            <label>Name: 
+                <input type="text" value={uploadDog.name} name="Name" onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit}/>
             </label>
-            <label>
-                Name:<br/>
-                <input type="text"  name="gender" onChange={handleChange}/>
+            <br/>
+            <label>Dob:
+                <input type="text"  value={uploadDog.dob} name="DOB" onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit}/>
             </label>
-            <label>
-                DOB:<br />
-                <input type="text" name="breed" onChange={handleChange}/>
+            <br/>
+            <label>Breed:
+                <input type="text" value={uploadDog.breed} name="breed" onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit}/>
             </label>
+            <br/>
+            <label>Vaccinated:
+                <input type="text" value={uploadDog.vaccinated} name="vaccinated" onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit}/>
+            </label>
+            <br/>
+            <label>Image:
+                <input type="text" value={uploadDog.img_url} name="image" onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit}/>
+            </label>
+            <br/>
             <label>
-                Image:<br/>
-                <select>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                <select onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit}>
+                    <option value={uploadDog.gender}>Male</option>
+                    <option value={uploadDog.gender}>Female</option>
                  </select>
             </label>
              :Gender<br />
                 
-            <button onClick={handleSubmit} type="submit" value="Submit">Submit</button>
+            <button onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit} type="submit" value="Submit">Submit</button>
         </form>
+        
         </>
     )
 }
