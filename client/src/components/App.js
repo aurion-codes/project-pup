@@ -1,7 +1,7 @@
 
 import '../App.css';
 import { useState, useEffect } from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Routes, Route, Naivigate} from 'react-router-dom';
 import AboutUs from './AboutUs';
 import Header from './Header';
 import Login from './Login'
@@ -14,6 +14,7 @@ function App() {
 
     const [dogList,setDogList] = useState([])
     const [users, setUsers] = useState(null)
+    const [user, setUser]= useState('')
    
   
     
@@ -46,23 +47,18 @@ function App() {
     return (
       
   
-      <BrowserRouter>
-      <Header />
-      <Switch>
-        <Route exact path="/" >
-          <AboutUs />
-        </Route>
-        <Route exact path="/login">
-          <Login setUser={setUsers}/>
-        </Route>
-        <Route exact path="/dogs">
-            <DogsPage dogs={dogList}/>
-        </Route>
-        <Route exaxt path="/dog-form">
-          <AddDogForm />
-        </Route>
-      </Switch>
-      </BrowserRouter>
+      <div>
+      <Header user={user} setUser={setUser} />
+      <Routes>
+      
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/login" element={<Login users={users} setUser={setUser}/>} />
+       
+        <Route path="/dogs" element={<DogsPage dogs={dogList}/>} />
+        <Route path="/dog-form" element={<AddDogForm />} />
+         
+      </Routes>
+      </div>
 
     )
   }

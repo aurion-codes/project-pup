@@ -1,0 +1,24 @@
+.Login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Login > input {
+  margin: 1rem;
+  border-radius: 10px;
+  padding: 15px;
+}
+.loginBtnWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.loginBtnWrapper > button {
+  padding: 20px;
+  border-radius: 10px;
+}

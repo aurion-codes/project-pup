@@ -1,6 +1,6 @@
 import {NavLink} from 'react-router-dom'
 
-function NavBar(){
+function NavBar({user, setUser}){
     
       const linkStyles = {
         display: "inline-block",
@@ -16,7 +16,16 @@ function NavBar(){
 
         <>
 
-        <NavLink 
+       {
+           user?
+           <div 
+           onClick={()=> setUser('')}
+            
+        >
+          Logout
+        </div>
+           :
+           <NavLink 
            to="/login"
            exact
            style={linkStyles}
@@ -26,8 +35,9 @@ function NavBar(){
         >
           Login
         </NavLink>
+       }
         <NavLink
-            to="/"
+            to="/about"
             exact
             style={linkStyles}
             activeStYle={{
@@ -50,6 +60,10 @@ function NavBar(){
         >
             AddDog
         </NavLink>
+
+        <div>
+            {/* name */}
+        </div>
         </>
     ) 
 

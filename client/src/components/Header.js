@@ -1,10 +1,10 @@
 import NavBar from "./NavBar";
 
-function Header() {
+function Header({user, setUser}) {
 
     return(
         <>
-        <NavBar />
+        <NavBar user={user} setUser={setUser} />
         </>
     )
 }
