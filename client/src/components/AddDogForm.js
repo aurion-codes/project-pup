@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 function AddDogForm({dog}){
 
-    const [addDog, setAddDog] = useState(false)
+    
 
     const [uploadDog, setUploadDog] = useState({
 
@@ -48,36 +48,36 @@ function AddDogForm({dog}){
         <>   
 
             <h1>Add Your Pup </h1>
-        <form>
+        <form onSubmit={handleSubmit}>
             <label>Name: 
-                <input type="text" value={uploadDog.name} name="Name" onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit}/>
+                <input type="text" value={uploadDog.name} name="Name" onChange={(e) => setUploadDog(e.target.value)} />
             </label>
             <br/>
             <label>Dob:
-                <input type="text"  value={uploadDog.dob} name="DOB" onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit}/>
+                <input type="text"  value={uploadDog.dob} name="DOB" onChange={(e) => setUploadDog(e.target.value)} />
             </label>
             <br/>
             <label>Breed:
-                <input type="text" value={uploadDog.breed} name="breed" onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit}/>
+                <input type="text" value={uploadDog.breed} name="breed" onChange={(e) => setUploadDog(e.target.value)} />
             </label>
             <br/>
             <label>Vaccinated:
-                <input type="text" value={uploadDog.vaccinated} name="vaccinated" onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit}/>
+                <input type="text" value={uploadDog.vaccinated} name="vaccinated" onChange={(e) => setUploadDog(e.target.value)} />
             </label>
             <br/>
             <label>Image:
-                <input type="text" value={uploadDog.img_url} name="image" onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit}/>
+                <input type="text" value={uploadDog.img_url} name="image" onChange={(e) => setUploadDog(e.target.value)} />
             </label>
             <br/>
             <label>
-                <select onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit}>
+                <select onChange={(e) => setUploadDog(e.target.value)} >
                     <option value={uploadDog.gender}>Male</option>
                     <option value={uploadDog.gender}>Female</option>
                  </select>
             </label>
              :Gender<br />
                 
-            <button onChange={(e) => setUploadDog(e.target.value)} onSubmit={handleSubmit} type="submit" value="Submit">Submit</button>
+            <button onChange={(e) => setUploadDog(e.target.value)} type="submit" value="Submit">Submit</button>
         </form>
         
         </>
