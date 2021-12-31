@@ -1,7 +1,7 @@
 
 import '../App.css';
 import { useState, useEffect } from 'react';
-import {Routes, Route, Naivigate} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import AboutUs from './AboutUs';
 import Header from './Header';
 import Login from './Login'

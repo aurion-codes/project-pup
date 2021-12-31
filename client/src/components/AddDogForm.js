@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import {useNavigate} from 'react-router-dom'
+import './DogForm.css'
 
-function AddDogForm({dog}){
 
-    
-    const history = useNavigate();
+function AddDogForm(){
+
+    const [submitted, setSubmitted] = useState(false)
     const [uploadDog, setUploadDog] = useState({
 
         name:"",
@@ -16,72 +16,53 @@ function AddDogForm({dog}){
 
     })
 
-    // function handleChange(e){
-    //     setUploadDog({...uploadDog, [e.target.name]: e.target.value})
-    // }
-
-
-    function handleSubmit(e){
-        e.preventDefault();
-
-        fetch("/dogs", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name:"", 
-            gender:"",
-            breed:"",
-            dob:"",
-            vaccinated:"",
-            img_url:""
-
-          }),
-        })
-          .then(() => {
-            console.log(' new dog added')
-          })     
-      }
+    function handleChange(e){
+        setUploadDog({...uploadDog, [e.target.name]: e.target.value})
+    }
 
 
     return(
-        <>   
 
+            
+            <div width="300px" className="addpup-container">
             <h1>Add Your Pup </h1>
-        <form onSubmit={handleSubmit}>
+        <form className="dog-form">
+            <div>
+            {submitted ? 'Your Pup Has Been Added' : null }
+            </div>
             <label>Name: 
-                <input type="text" value={uploadDog.name} name="Name" onChange={(e) => setUploadDog(e.target.value)} />
+                <input className="input-fields" onChange={handleChange} type="text" value={uploadDog.name} name="Name" onChange={(e) => setUploadDog(e.target.value)} />
             </label>
             <br/>
             <label>Dob:
-                <input type="text"  value={uploadDog.dob} name="DOB" onChange={(e) => setUploadDog(e.target.value)} />
+                <input className="input-fields" onChange={handleChange} type="text" value={uploadDog.dob} name="DOB" onChange={(e) => setUploadDog(e.target.value)} />
             </label>
             <br/>
             <label>Breed:
-                <input type="text" value={uploadDog.breed} name="breed" onChange={(e) => setUploadDog(e.target.value)} />
+                <input className="input-fields" onChange={handleChange} type="text" value={uploadDog.breed} name="breed" onChange={(e) => setUploadDog(e.target.value)} />
             </label>
             <br/>
             <label>Vaccinated:
-                <input type="text" value={uploadDog.vaccinated} name="vaccinated" onChange={(e) => setUploadDog(e.target.value)} />
+                <input className="input-fields" onChange={handleChange} type="text" value={uploadDog.vaccinated} name="vaccinated"/>
             </label>
             <br/>
             <label>Image:
-                <input type="text" value={uploadDog.img_url} name="image" onChange={(e) => setUploadDog(e.target.value)} />
+                <input className="input-fields" onChange={handleChange} type="text" value={uploadDog.img_url} name="image" />
             </label>
             <br/>
-            <label>
-                <select onChange={(e) => setUploadDog(e.target.value)} >
+            <label>Gender:
+                <select onChange={handleChange} >
                     <option value={uploadDog.gender}>Male</option>
-                    <option value={uploadDog.gender}>Female</option>
+                    <option> Female</option>
                  </select>
             </label>
-             :Gender<br />
+             <br />
                 
-            <button onChange={(e) => setUploadDog(e.target.value)} type="submit" value="Submit">Submit</button>
+            <button className="input-fields" type="submit" value="Submit">Submit</button>
         </form>
+        </div>
         
-        </>
+       
     )
 }
 
