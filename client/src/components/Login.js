@@ -12,11 +12,11 @@ function Login({users, setUser}) {
       // console.log(users)
       
        const currentUser= users.find((user)=> user.username===username && user.password_digest===password)
-       console.log(currentUser)
        if(currentUser){
          setUser(currentUser)
          console.log(currentUser)
           navigate('/dogs')
+          
        }
     }
 
@@ -32,7 +32,7 @@ function Login({users, setUser}) {
        
         <input className="form-field" type="password" placeholder='password' value={password} onChange={(e)=> setPassword(e.target.value)} />
        
-        <button type="text" className="form-field" onClick={onLogin}>Login</button> 
+        <button type="button" className="form-field" onClick={onLogin}>Login</button> 
       </form>
       </div>
     

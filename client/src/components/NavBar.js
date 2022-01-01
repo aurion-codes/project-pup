@@ -21,7 +21,7 @@ function NavBar({user, setUser}){
        {
            user ?
            <div 
-           onClick={()=> setUser('Ari')}
+           onClick={()=> setUser('')}
             
         >
           Logout
