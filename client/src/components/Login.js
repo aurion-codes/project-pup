@@ -22,24 +22,25 @@ function Login({users, setUser}) {
 
     return(
 
-      <>
+      
+     <>
     <div className="form-container">
+       
       <form className="login-form">
   
         <input className="form-field" type="text" placeholder='username' value={username} onChange={(e)=> setUsername(e.target.value)} />
        
         <input className="form-field" type="password" placeholder='password' value={password} onChange={(e)=> setPassword(e.target.value)} />
        
-        <button type="text" className="form-field" onClick={onLogin}>Login</button>    
-    
+        <button type="text" className="form-field" onClick={onLogin}>Login</button> 
       </form>
-    </div>
-
-    </>
-
+      </div>
     
-  );
-    // return(
+    
+
+    {/* //       :
+
+    //       <> 
     //    <div className='Login' >
     //      <input placeholder='username' value={username} onChange={(e)=> setUsername(e.target.value)} />
     //      <input type="password" placeholder='Password' value={password} onChange={(e)=> setPassword(e.target.value)} />
@@ -47,7 +48,11 @@ function Login({users, setUser}) {
     //     <button onClick={onLogin}  >Login</button>
     //     </div>
     //    </div>
-    // )
+    //    </> */}
+     
+    </>
+    )
+    
 }
 
 export default Login

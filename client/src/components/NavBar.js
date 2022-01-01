@@ -1,8 +1,10 @@
 import {NavLink} from 'react-router-dom'
 
 function NavBar({user, setUser}){
+
     
-      const linkStyles = {
+    
+      const linkstyles = {
         display: "inline-block",
         width: "160px",
         padding: "12px",
@@ -17,9 +19,9 @@ function NavBar({user, setUser}){
         <>
 
        {
-           user?
+           user ?
            <div 
-           onClick={()=> setUser('')}
+           onClick={()=> setUser('Ari')}
             
         >
           Logout
@@ -27,9 +29,8 @@ function NavBar({user, setUser}){
            :
            <NavLink 
            to="/login"
-           exact
-           style={linkStyles}
-           activeStyle={{
+           style={linkstyles}
+           activestyle={{
                background: "darblue"
            }}
         >
@@ -38,9 +39,8 @@ function NavBar({user, setUser}){
        }
         <NavLink
             to="/about"
-            exact
-            style={linkStyles}
-            activeStYle={{
+            style={linkstyles}
+            activestyle={{
                 background: "darkblue"
             }}
         >
@@ -48,21 +48,19 @@ function NavBar({user, setUser}){
         </NavLink>
         <NavLink 
             to="/dogs"
-            exact
-            style={linkStyles}
+            style={linkstyles}
         >
             Dogs
         </NavLink>
         <NavLink 
             to="/dog-form"
-            exact
-            style={linkStyles}
+            style={linkstyles}
         >
             AddDog
         </NavLink>
 
         <div>
-            {/* name */}
+          
         </div>
         </>
     ) 

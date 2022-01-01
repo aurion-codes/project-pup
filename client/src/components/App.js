@@ -40,7 +40,11 @@ function App() {
   
     
     
-    
+  //   const renderDogs = dogs.().map((dogID) => (
+  //     <li key={dogID}>
+         
+  //     </li>
+  // ))
     
    
     
@@ -55,7 +59,7 @@ function App() {
         <Route path="/login" element={<Login users={users} setUser={setUser}/>} />
        
         <Route path="/dogs" element={<DogsPage dogs={dogList}/>} />
-        <Route path="/dog-form" element={<AddDogForm />} />
+        <Route path="/dog-form" element={<AddDogForm users={users} dogs={dogList} />} />
          
       </Routes>
       </div>

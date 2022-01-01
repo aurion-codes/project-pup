@@ -1,5 +1,6 @@
     // import styled from "styled-components"
     // import {useState, useEffect} from "react"
+    import './DogCard.css'
 
     
 
@@ -15,8 +16,8 @@
         //   console.log(getDog)
 
     return(
-        <>
-        <div>
+    
+        
             <div className="card">
   <div className="image">
   <h1 className="card_name">{dog.name}</h1>
@@ -29,11 +30,11 @@
   <h3>vaccinated: {dog.vaccinated ?  'yes' : 'no'}</h3>
   <h2>{dog.adopted ? <b>'Sorry, I am adopted already'</b> : <button className="card_btn">Adopt Me :)</button>}</h2>
   </div>
-
   </div>
+
   
-        </div>
-        </>
+  
+        
     )
 }
 
