@@ -19,6 +19,7 @@ function AddDogForm({users}, {dogs}){
 
     function handleChange(e){
         setUploadDog({...uploadDog, [e.target.name]: e.target.value})
+        console.log(uploadDog)
         
     }
 

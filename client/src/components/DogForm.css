@@ -1,6 +1,5 @@
 body {
     background: lightseagreen;
-    display: flex;
     justify-content: center;
     align-items: center;
     padding: 30px
@@ -12,6 +11,7 @@ body {
     margin: auto;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     padding: 10px;
+    margin: 0px 20;
   }
 
   .dog-form {
@@ -32,8 +32,8 @@ body {
   .input-fields{
     display:flex;
     flex-direction: column ;
-    margin: 6px 0 6px 0;
-    padding: 15px;
+    margin: 0px 6 0 6px;
+    padding: 10px;
     font-size: 16px;
     border: 0;
     font-family: "Roboto", sans-serif;
@@ -54,6 +54,7 @@ body {
     background: lightseagreen;
     color: white;
     cursor: pointer;
+    
   }
 
   button:disabled {
