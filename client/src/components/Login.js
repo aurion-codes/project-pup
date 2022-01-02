@@ -1,4 +1,4 @@
-import { useState} from 'react'
+import { useState,useEffect} from 'react'
 import { useNavigate } from "react-router-dom";
 import './Login.css'
 
@@ -8,19 +8,34 @@ function Login({users, setUser}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate= useNavigate()
+
+
+
+    useEffect(() => {
+      
+     const user =  localStorage.getItem("user")
+     if(user){
+      navigate('/dogs')
+     }else{
+      navigate('/login')
+     }
+   
+    }, [])
+
     const onLogin=()=>{ 
       // console.log(users)
       
        const currentUser= users.find((user)=> user.username===username && user.password_digest===password)
        if(currentUser){
          setUser(currentUser)
-         localStorage.setItem("user", currentUser);
+         localStorage.setItem("user", JSON.stringify(currentUser));
          console.log(currentUser)
           navigate('/dogs')
           
        }
     }
-      
+
+    
 
     return(
 

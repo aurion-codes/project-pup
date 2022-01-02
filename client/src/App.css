@@ -12,38 +12,3 @@ body{
   margin:2rem;
 }
 
-/* .wrapper {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, 
-  minmax(12rem, 16rem));
-  gap:2rem;
-  justify-content:center;
-
-}
-
-.card{
-  /* overflow:hidden; */
-  /* box-shadow:0 2px 20px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  cursor:pointer;
-  transition:transform 200ms ease-in;
-  padding: 20px
-} */
-
-
-  /* .__image{
-    height:12rem;
-    width:200px;
-    object-fit:cover;
-  }
-
-  
-  .title{
-    padding:1rem;
-  }
-
-  .__description{
-    padding:0 1rem;
-  } */ 

@@ -2,6 +2,8 @@ import {NavLink} from 'react-router-dom'
 
 function NavBar({user, setUser}){
 
+
+  // let user = localStorage.getItem("user")
     
     
       const linkstyles = {
@@ -57,12 +59,15 @@ function NavBar({user, setUser}){
         >
             Dogs
         </NavLink>
-        <NavLink 
-            to="/dog-form"
-            style={linkstyles}
-        >
-            AddDog
-        </NavLink>
+        {
+          user  ?  <NavLink 
+          to="/dog-form"
+          style={linkstyles}
+      >
+          AddDog
+      </NavLink>   : null 
+        }
+       
 
         <div>
           

@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import './DogForm.css'
-
+import { useNavigate } from "react-router-dom";
 
 function AddDogForm({users}, {dogs}){
 
@@ -14,6 +14,18 @@ function AddDogForm({users}, {dogs}){
         img_url:""
 
     })
+    const navigate= useNavigate()
+    // const [user,setuser]= useState(false)
+
+
+    useEffect(() => {
+        const user =  localStorage.getItem("user")
+        if(user){
+            navigate('/dog-form')
+        }else{
+            navigate('/login')
+        }
+    }, [])
 
 
 
@@ -56,7 +68,6 @@ function AddDogForm({users}, {dogs}){
 
     return(
 
-            
             <div width="300px" className="addpup-container">
             <h1>Add Your Pup </h1>
         <form onSubmit={handleSubmit} className="dog-form">
