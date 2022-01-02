@@ -12,6 +12,11 @@ function NavBar({user, setUser}){
         textDecoration:"none",
         color: "black",
       };
+
+      const handleLogout=()=>{
+        localStorage.removeItem("user")
+        setUser('')
+      }
       
 
     return (
@@ -21,7 +26,7 @@ function NavBar({user, setUser}){
        {
            user ?
            <div 
-           onClick={()=> setUser('')}
+           onClick={()=> handleLogout()}
             
         >
           Logout

@@ -14,7 +14,7 @@ function App() {
 
     const [dogList,setDogList] = useState([])
     const [users, setUsers] = useState(null)
-    const [user, setUser]= useState('')
+    const [user, setUser]= useState(localStorage.getItem('user'))
    
   
     
@@ -29,11 +29,13 @@ function App() {
     
   
    
-    useEffect(() => (
+    useEffect(() => {
       fetch("/users")
       .then ((r) => r.json())
       .then ((users) => setUsers(users))
-    ), []);
+
+      // setUser(localStorage.getItem("user"))s
+    }, []);
   
 
     

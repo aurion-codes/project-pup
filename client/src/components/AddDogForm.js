@@ -18,14 +18,16 @@ function AddDogForm({users}, {dogs}){
 
 
     function handleChange(e){
-        setUploadDog({...uploadDog, [e.target.name]: e.target.value})
+        setUploadDog({...uploadDog,
+            [e.target.name]: e.target.value
+        })
         console.log(uploadDog)
         
     }
 
     function handleSubmit(e){
-        e.preventDefault.default();
-        console.log(uploadDog) 
+        e.preventDefault();
+        console.log("uploaded dog: "+JSON.stringify(uploadDog)) 
 
             fetch("/dogs",{
             method:"POST",
@@ -43,7 +45,8 @@ function AddDogForm({users}, {dogs}){
                     breed:"",
                     dob:"",
                     vaccinated:"",
-                    img_url:""
+                    img_url:""                  
+
                 })
         
             })

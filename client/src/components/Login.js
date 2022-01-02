@@ -8,17 +8,19 @@ function Login({users, setUser}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate= useNavigate()
-    const onLogin=()=>{
+    const onLogin=()=>{ 
       // console.log(users)
       
        const currentUser= users.find((user)=> user.username===username && user.password_digest===password)
        if(currentUser){
          setUser(currentUser)
+         localStorage.setItem("user", currentUser);
          console.log(currentUser)
           navigate('/dogs')
           
        }
     }
+      
 
     return(
 
