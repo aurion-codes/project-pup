@@ -67,6 +67,12 @@ function NavBar({user, setUser}){
           AddDog
       </NavLink>   : null 
         }
+        <NavLink 
+            to="/profile"
+            style={linkstyles}
+        >
+            Dogs
+        </NavLink>
        
 
         <div>

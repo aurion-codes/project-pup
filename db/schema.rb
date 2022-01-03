@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_28_082142) do
+ActiveRecord::Schema.define(version: 2022_01_03_151914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,10 @@ ActiveRecord::Schema.define(version: 2021_12_28_082142) do
     t.boolean "vaccinated"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "adopter_id"
+    t.integer "poster_id"
+    t.index ["adopter_id"], name: "index_dogs_on_adopter_id"
+    t.index ["poster_id"], name: "index_dogs_on_poster_id"
   end
 
   create_table "reviews", force: :cascade do |t|

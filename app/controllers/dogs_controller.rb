@@ -27,11 +27,11 @@ class DogsController < ApplicationController
         dog = Dog.find(params[:id])
         dog.destroy!
         head :no_content   
-    end
+    end 
 
     private
 
     def params_dogs
-        params.permit(:name, :age, :breed, :dob, :adopted, :vaccinated, :bio, :img_url)
+        params.permit(:name, :age, :breed, :dob, :gender, :adopted, :vaccinated, :bio, :img_url, :user_id)
     end
 end

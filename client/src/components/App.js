@@ -7,7 +7,7 @@ import Header from './Header';
 import Login from './Login'
 import DogsPage from './DogsPage'
 import AddDogForm from './AddDogForm';
-
+import Profile from './Profile';
 
 function App() {
   
@@ -15,6 +15,7 @@ function App() {
     const [dogList,setDogList] = useState([])
     const [users, setUsers] = useState(null)
     const [user, setUser]= useState(localStorage.getItem('user'))
+    const [update, setUpdate] = useState(false)
    
   
     
@@ -32,10 +33,12 @@ function App() {
     useEffect(() => {
       fetch("/users")
       .then ((r) => r.json())
-      .then ((users) => setUsers(users))
-
+      .then ((users) => {
+        setUsers(users)
+        setUpdate(false)
+      })
       // setUser(localStorage.getItem("user"))s
-    }, []);
+    }, [update]);
   
 
     
@@ -61,7 +64,8 @@ function App() {
         <Route path="/login" element={<Login users={users} setUser={setUser}/>} />
        
         <Route path="/dogs" element={<DogsPage dogs={dogList}/>} />
-        <Route path="/dog-form" element={<AddDogForm users={users} dogs={dogList} />} />
+        <Route path="/dog-form" element={<AddDogForm users={users} dogs={dogList} setUpdate={setUpdate} />} />
+        <Route path="/profile" element={<Profile users={users}dogs={dogList}/>} />
          
       </Routes>
       </div>
