@@ -41,8 +41,8 @@ class ReviewsController < ApplicationController
 
     private
 
-    def params_review
-        params.permit(:comment, :user_id, :dog_id)
+    def params_reviews
+        params.permit(:like, :user_id, :dog_id)
     end
 
 end

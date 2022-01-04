@@ -56,38 +56,38 @@ function AddDogForm({ users, dogs, setUpdate}) {
       });
   }
 
-  const [editDog, setEditDog] = useState({});
-  const [editing, setEditing] = useState(false);
+  // const [editDog, setEditDog] = useState({});
+  // const [editing, setEditing] = useState(false);
   const [newDog, setNewDog] = useState(false)
 
-  function handleEditForm(e) {
-    setEditDog({ ...editDog, [e.target.name]: e.target.value });
-  }
+  // function handleEditForm(e) {
+  //   setEditDog({ ...editDog, [e.target.name]: e.target.value });
+  // }
 
-  function handleEditButtion(dogs) {
-    setEditing(true);
-    setEditDog(dogs);
-    setNewDog({
-      name: dogs.name,
-      breed: dogs.breed,
-      bio: dogs.bio,
-      vaccinated: dogs.vaccinated,
-    });
-  }
+  // function handleEditButtion(dogs) {
+  //   setEditing(true);
+  //   setEditDog(dogs);
+  //   setNewDog({
+  //     name: dogs.name,
+  //     breed: dogs.breed,
+  //     bio: dogs.bio,
+  //     vaccinated: dogs.vaccinated,
+  //   });
+  // }
 
 
-  function handleEdit(dogs){
-    fetch(`/dogs/${dogs.id}`,{
-      method: "PATCH",
-      headers: {
-        "Content-Type" : "application/json"
-      },
-      body: JSON.stringify(dogs),
-      credentials: "include"
-    })
-    .then(setUpdate(true))
+  // function handleEdit(dogs){
+  //   fetch(`/dogs/${dogs.id}`,{
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type" : "application/json"
+  //     },
+  //     body: JSON.stringify(dogs),
+  //     credentials: "include"
+  //   })
+  //   .then(setUpdate(true))
 
-  }
+  // }
 
   return (
     <div width="300px" className="addpup-container">
@@ -166,9 +166,9 @@ function AddDogForm({ users, dogs, setUpdate}) {
           Submit
         </button>
       </form>
-      <>
+      
                         
-                        <h1>Edit Dog:</h1>
+                        {/* <h1>Edit Dog:</h1>
                         <form onSubmit={() => {handleEdit(editDog); setEditDog(false)}} >
                             <label>Job Title <br/>
                                 <input type="text" value={editDog.name} placeholder="Pup's Name" name="name" onChange={handleEditForm}/> 
@@ -184,7 +184,7 @@ function AddDogForm({ users, dogs, setUpdate}) {
                             </label>
                             <button className='btn' >Submit</button>
                         </form>
-                    </>
+                    </> */}
     </div>
     
   );

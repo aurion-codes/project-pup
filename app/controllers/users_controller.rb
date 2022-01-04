@@ -11,10 +11,10 @@ class UsersController < ApplicationController
         render json: user
     end
 
-    # def showme
-    #     user = User.find(session[:user_id])
-    #     render json: user
-    # end
+    def showme
+        user = User.find(session[:user_id])
+        render json: user
+    end
       
 
     def create

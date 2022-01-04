@@ -1,4 +1,5 @@
 class DogsController < ApplicationController
+    
  
     def index
         render json: Dog.all
@@ -10,7 +11,7 @@ class DogsController < ApplicationController
     end
 
     def create
-        # return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
         dog = Dog.create(params_dogs)
         render json: dog
     end
@@ -32,6 +33,6 @@ class DogsController < ApplicationController
     private
 
     def params_dogs
-        params.permit(:name, :age, :breed, :dob, :gender, :adopted, :vaccinated, :bio, :img_url, :user_id)
+        params.permit(:name, :age, :breed, :dob, :gender, :adopted, :vaccinated, :bio, :img_url)
     end
 end

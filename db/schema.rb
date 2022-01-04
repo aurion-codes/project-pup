@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_151914) do
+ActiveRecord::Schema.define(version: 2021_12_28_082041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,20 +24,20 @@ ActiveRecord::Schema.define(version: 2022_01_03_151914) do
     t.string "img_url"
     t.boolean "adopted"
     t.boolean "vaccinated"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "adopter_id"
-    t.integer "poster_id"
-    t.index ["adopter_id"], name: "index_dogs_on_adopter_id"
-    t.index ["poster_id"], name: "index_dogs_on_poster_id"
+    t.index ["user_id"], name: "index_dogs_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "comment"
-    t.integer "user_id"
-    t.integer "dog_id"
+    t.boolean "like", default: false
+    t.bigint "user_id"
+    t.bigint "dog_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["dog_id"], name: "index_reviews_on_dog_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,4 +49,7 @@ ActiveRecord::Schema.define(version: 2022_01_03_151914) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "dogs", "users"
+  add_foreign_key "reviews", "dogs"
+  add_foreign_key "reviews", "users"
 end
