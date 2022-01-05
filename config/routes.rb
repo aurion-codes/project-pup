@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :dogs do
     collection do 
       get :user_dogs
+      get :like_dogs
     end
   end
   

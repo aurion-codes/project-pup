@@ -7,15 +7,11 @@ import Login from "./Login";
 import DogsPage from "./DogsPage";
 import AddDogForm from "./AddDogForm";
 import Profile from "./Profile";
-
+import EditDogForm from "./EditDogForm"
 function App() {
   
 
   const [user, setUser] = useState({isLoggedIn: false, user: {}})
-  
-  const [dogList,setDogList] = useState([])
-  const [update, setUpdate] = useState(false)
-  
   
   const handleLogin = (data) => {
       setUser({
@@ -71,6 +67,7 @@ function App() {
         <Route path="/dogs" element={<DogsPage user={user}/>} />
         <Route path="/dogForm" element={<AddDogForm user={user}  />} />
         <Route path="/profile" element={<Profile user={user} />} />
+        <Route path="/editDog/:id" element={<EditDogForm user={user}/>} />
          
       </Routes>
     </>

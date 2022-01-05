@@ -20,19 +20,27 @@ class DogsController < ApplicationController
     def update
         return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
         dog = Dog.find(params[:id])
-        dog.update(params_jobs)
+        dog.update(params_dogs)
         render json: dog
     end
 
     def destroy
         return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
-        dog = Dog.find(params[:id])
+        dog = Dog.find_by(id:params[:id])
         dog.destroy!
-        head :no_content   
+        dogs = current_user.dogs
+        dogs = dogs.map{|dog| dog.details}
+        render json: dogs
     end 
 
     def user_dogs
         dogs = current_user.dogs
+        dogs = dogs.map{|dog| dog.details}
+        render json: dogs
+    end
+
+    def like_dogs
+        dogs = Dog.joins(reviews: :user).where(reviews: {user_id: current_user.id})
         dogs = dogs.map{|dog| dog.details}
         render json: dogs
     end

@@ -9,9 +9,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
 
-function DogShow({ user, dogData }) {
+function DogShow({ user, dogData, handleDeleteDog, handleEditDog }) {
   const [dog, setDog] = useState({details: dogData.details, reviews: dogData.reviews})
   
   const handleReviews = ()=>{
@@ -29,10 +29,9 @@ function DogShow({ user, dogData }) {
         setDog({...dog, reviews: data})
       } 
     })
-    .catch(error => console.log('api errors:', error))
-    
+    .catch(error => console.log('api errors:', error))  
   }
-
+  const url = "editDog/"+dog.details.id
   return (
     <Card sx={{ maxWidth: 445, margin: 5, height: 905 }}>
       <CardMedia
@@ -63,8 +62,13 @@ function DogShow({ user, dogData }) {
       <CardActions>
         <Button size="small">Adopt Me :)</Button>
         <Button size="small">Learn More</Button>
-        {user?.user?.id &&
-        <Button onClick={()=>handleReviews()}><FontAwesomeIcon icon={faHeart} /> <span className=""> {dog.reviews}</span></Button> }
+        
+        <Button onClick={()=>handleReviews()}><FontAwesomeIcon icon={faHeart} /> <span className=""> {dog.reviews}</span></Button> 
+        {handleDeleteDog &&
+        <Button onClick={()=>handleDeleteDog(dog.details.id)}><FontAwesomeIcon icon={faTrash} /></Button> }
+        {handleEditDog &&
+        <a href={url}><FontAwesomeIcon icon={faEdit} /></a> }
+             
       </CardActions>
     </Card>
     // <div className="cards">
