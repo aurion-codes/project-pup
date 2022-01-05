@@ -23,10 +23,10 @@ class ReviewsController < ApplicationController
 
         if review.present?
             review.destroy!
-        elsif dog.user_id != current_user.id
+        elsif dog&.user_id != current_user.id
             Review.create(params_reviews)
         end
-        reviews = Dog.find_by(id: params[:dog_id]).reviews.count
+        reviews = Dog.find_by(id: params[:dog_id]).reviews.reload.count
         render json: reviews
     end
 
