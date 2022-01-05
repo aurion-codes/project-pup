@@ -25,9 +25,7 @@ function DogShow({ user, dogData, handleDeleteDog, handleEditDog }) {
     })
     .then((r) => r.json())
     .then((data) => {
-      if (data) {
-        setDog({...dog, reviews: data})
-      } 
+      setDog({...dog, reviews: data})
     })
     .catch(error => console.log('api errors:', error))  
   }
