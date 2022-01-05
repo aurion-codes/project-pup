@@ -11,86 +11,69 @@ import Profile from "./Profile";
 function App() {
   
 
+  const [user, setUser] = useState({isLoggedIn: false, user: {}})
+  
   const [dogList,setDogList] = useState([])
-  const [user, setUser] = useState({LoggedIn: false, user: {}})
   const [update, setUpdate] = useState(false)
   
   
-  handleLogin = (data) => {
+  const handleLogin = (data) => {
       setUser({
       isLoggedIn: true,
       user: data.user
     })
   }
-handleLogout = () => {
-      setUser({
-    isLoggedIn: false,
-    user: {}
+  
+  const handleLogout = () => {
+
+    fetch("/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
     })
+    .then((r) => r.json())
+    .then((data) => {
+      if (data.logged_out) {
+        setUser({user: {}, isLoggedIn: false})
+      }
+    }) 
+    
   }
 
 
-  loginStatus = () => {
-    fetch('http://localhost:3001/logged_in', 
-   {withCredentials: true})    
-.then(response => {
-      if (response.data.logged_in) {
-        handleLogin(response)
+  const loginStatus = () => {
+
+    fetch('/logged_in', 
+      {withCredentials: true})    
+    .then((r) => r.json())
+    .then((data) => {
+      if (data.logged_in) {
+        handleLogin(data)
       } else {
         handleLogout()
       }
     })
     .catch(error => console.log('api errors:', error))
   };
-
-  useEffect(() => (
-    fetch("/dogs")
-    .then ((r) => r.json())
-    .then ((dogs) => setDogList(dogs))
-  ), []);
-
   
+  useEffect(()=> loginStatus(),[setUser])
 
- 
-  useEffect(() => {
-    fetch("/users")
-    .then ((r) => r.json())
-    .then ((users) => {
-      setUsers(users)
-      setUpdate(false)
-    })
-    // setUser(localStorage.getItem("user"))s
-  }, [update]);
+  return ( 
 
-
-  
-
-  
-  
-//   const renderDogs = dogs.().map((dogID) => (
-//     <li key={dogID}>
+    <>
+      <Header user={user} logout={handleLogout} setUser={setUser}/>
+      <Routes>
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/login" element={<Login user={user} setUser={setUser} logout={handleLogout}/>} />
        
-//     </li>
-// ))
-  
- 
-  
-  return (
-    
-
-    <div>
-    <Header user={user} setUser={setUser} />
-    <Routes>
-    
-      <Route path="/about" element={<AboutUs />} />
-      <Route path="/login" element={<Login users={users} setUser={setUser}/>} />
-     
-      <Route path="/dogs" element={<DogsPage dogs={dogList}/>} />
-      <Route path="/dog-form" element={<AddDogForm users={users} dogs={dogList} setUpdate={setUpdate} />} />
-      <Route path="/profile" element={<Profile users={users}dogs={dogList}/>} />
-       
-    </Routes>
-    </div>
+        <Route path="/dogs" element={<DogsPage user={user}/>} />
+        <Route path="/dogForm" element={<AddDogForm user={user}  />} />
+        <Route path="/profile" element={<Profile user={user} />} />
+         
+      </Routes>
+    </>
 
   )
 }

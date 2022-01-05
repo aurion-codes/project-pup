@@ -2,7 +2,8 @@ class DogsController < ApplicationController
     
  
     def index
-        render json: Dog.all
+        dogs = Dog.all.map{|dog| dog.details}
+        render json: dogs
     end
 
     def show 
@@ -12,7 +13,7 @@ class DogsController < ApplicationController
 
     def create
         return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
-        dog = Dog.create(params_dogs)
+        dog = current_user.dogs.create!(params_dogs)
         render json: dog
     end
 
@@ -29,6 +30,12 @@ class DogsController < ApplicationController
         dog.destroy!
         head :no_content   
     end 
+
+    def user_dogs
+        dogs = current_user.dogs
+        dogs = dogs.map{|dog| dog.details}
+        render json: dogs
+    end
 
     private
 

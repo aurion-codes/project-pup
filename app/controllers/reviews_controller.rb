@@ -18,8 +18,9 @@ class ReviewsController < ApplicationController
     #Create
     def create
         return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
-        review = Review.create(params_reviews)
-        render json: review
+        Review.create(params_reviews)
+        reviews = Dog.find_by(id: params[:dog_id]).reviews.count
+        render json: reviews
     end
 
      

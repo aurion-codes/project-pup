@@ -14,7 +14,13 @@ class Dog < ApplicationRecord
     # validates :vaccinated, presence:true
     # validates :poster_id, presence:true
 
-
+   def details
+   	reviews = self&.reviews&.count
+   	return {
+   		reviews: reviews,
+   		details: self
+   	}
+   end
 
   
 

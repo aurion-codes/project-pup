@@ -6,9 +6,10 @@ body {
   }
 
 .addpup-container  {
+    border-radius: 15px;
     width: 400px;
     background-color: white;
-    margin: auto;
+    margin: 50px auto;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     padding: 10px;
     margin: 0px 20;
@@ -59,4 +60,10 @@ body {
 
   button:disabled {
     cursor: default;
+  }
+  h1{
+    text-align: center;
+  }
+  form{
+    align-items: center;
   }

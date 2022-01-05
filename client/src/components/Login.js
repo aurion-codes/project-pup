@@ -1,64 +1,59 @@
 import { useState,useEffect} from 'react'
 import './Login.css'
+import { useNavigate } from "react-router-dom";
 
     
-function Login({users, setUser}) {
+function Login({user, setUser, logout}) {
 
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const 
-  
+  const navigate = useNavigate();
+  const [username, setUsername] = useState(null)
+  const [password, setPassword] = useState(null)
 
-  handleLogin = (data) => {
-    setUsername({
-      isLoggedIn: true,
-      user: data.user
+
+  const onLogin = ()=>{
+    const userParams ={
+      username: username,
+      password: password
+    }
+
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userParams),
+      credentials: "include",
     })
-  }
-handleLogout = () => {
-    this.setState({
-    isLoggedIn: false,
-    user: {}
+    .then((r) => r.json())
+    .then((data) => {
+      if (data.logged_in) {
+        setUser({...user, user: data.user, isLoggedIn: data.logged_in})
+      } 
     })
+    .catch(error => console.log('api errors:', error))
   }
 
-  useEffect(() => {
-
-  
+  useEffect(()=>{
+    if(user.isLoggedIn){
+      navigate("/dogs");
+    }
+  },[user])
 
   return(
 
     
    <>
-  <div className="form-container">
+    <div className="form-container">
      
-    <form className="login-form">
+      <form className="login-form">
 
-      <input className="form-field" type="text" placeholder='username' value={username} onChange={(e)=> setUsername(e.target.value)} />
-     
-      <input className="form-field" type="password" placeholder='password' value={password} onChange={(e)=> setPassword(e.target.value)} />
-     
-      <button type="button" className="form-field" onClick={onLogin}>Login</button> 
-    </form>
+        <input className="form-field" type="text" placeholder='username' value={username} onChange={(e)=> setUsername(e.target.value)} />
+       
+        <input className="form-field" type="password" placeholder='password' value={password} onChange={(e)=> setPassword(e.target.value)} />
+       
+        <button type="button" className="form-field" onClick={()=>onLogin()}>Login</button> 
+      </form>
     </div>
-    {/* <div className="form-container">
-     
-    <form className="signup-form">
-    <input className="form-field" type="text" placeholder='fullname' value={username} onChange={(e)=> setUsername(e.target.value)} />
-     
-     <input className="form-field" type="password" placeholder='password' value={password} onChange={(e)=> setPassword(e.target.value)} />
-
-      <input className="form-field" type="text" placeholder='username' value={username} onChange={(e)=> setUsername(e.target.value)} />
-     
-      <input className="form-field" type="password" placeholder='password' value={password} onChange={(e)=> setPassword(e.target.value)} />
-     
-      <button type="button" className="form-field" onClick={onLogin}>Login</button> 
-    </form>
-    </div>
-   */}
-  
-  
-
   </>
   )
   

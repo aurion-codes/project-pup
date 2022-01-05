@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   
   resources :users
   resources :reviews
-  resources :dogs 
+  resources :dogs do
+    collection do 
+      get :user_dogs
+    end
+  end
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
@@ -10,7 +14,7 @@ Rails.application.routes.draw do
 
   get "/sessions", to: "sessions#index"
   post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
+  post "/logout", to: "sessions#destroy"
   get "/me", to: "users#showme"
-  delete "/logged_in", to: "sessions#is_logged_in?"
+  get "/logged_in", to: "sessions#is_logged_in?"
 end

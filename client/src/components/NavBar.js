@@ -1,6 +1,6 @@
 import {NavLink} from 'react-router-dom'
-
-function NavBar({user, setUser}){
+import {Navbar, Nav, Container} from 'react-bootstrap'
+function NavBar({user, logout, setUser}){
 
 
   // let user = localStorage.getItem("user")
@@ -14,75 +14,31 @@ function NavBar({user, setUser}){
     textDecoration:"none",
     color: "black",
   };
-
-  const handleLogout=()=>{
-    localStorage.removeItem("user")
-    setUser('')
-  }
-  
-
 return (
 
     <>
-
-   {
-       user ?
-       <div 
-       onClick={()=> handleLogout()}
-        
-    >
-      Logout
-    </div>
-       :
-       <NavLink 
-       to="/login"
-       style={linkstyles}
-       activestyle={{
-           background: "darblue"
-       }}
-    >
-      Login
-    </NavLink>
-   }
-    <NavLink
-        to="/about"
-        style={linkstyles}
-        activestyle={{
-            background: "darkblue"
-        }}
-    >
-      About Us
-    </NavLink>
-    <NavLink 
-        to="/dogs"
-        style={linkstyles}
-    >
-        Dogs
-    </NavLink>
-    {
-      user  ?  <NavLink 
-      to="/dog-form"
-      style={linkstyles}
-  >
-      AddDog
-  </NavLink>   : null 
-    }
-    <NavLink 
-        to="/profile"
-        style={linkstyles}
-    >
-        Dogs
-    </NavLink>
-   
-
-    <div>
-      
-    </div>
-    </>
+     <Navbar bg="light" variant="light">
+      <Container>
+        <Navbar.Brand href="/dogs">Dogs</Navbar.Brand>
+        <Nav className="me-auto"> 
+          <Nav.Link href="/about"> About </Nav.Link>
+          <Nav.Link href="/dogForm"> Add Dog </Nav.Link>
+          
+          {user.isLoggedIn && <Nav.Link href="/profile"> Profile </Nav.Link> }
+        </Nav>
+        <Nav>  
+          {
+            user.isLoggedIn ?
+            <div onClick={()=> logout()}>
+              Logout
+            </div>
+            :
+            <Nav.Link href="/login"> Login </Nav.Link>
+          }
+        </Nav>
+      </Container>
+    </Navbar>
+  </>
 ) 
-
-
-
 }
-
 export default NavBar

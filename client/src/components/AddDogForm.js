@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./DogForm.css";
 import { useNavigate } from "react-router-dom";
 
-function AddDogForm({ users, dogs, setUpdate}) {
+function AddDogForm({ user, dogs, setUpdate}) {
   // const [submitted, setSubmitted] = useState(false)
   const [uploadDog, setUploadDog] = useState({
     name: "",
@@ -16,13 +16,11 @@ function AddDogForm({ users, dogs, setUpdate}) {
   // const [user,setuser]= useState(false)
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      navigate("/dog-form");
-    } else {
-      navigate("/login");
-    }
-  }, []);
+    
+    if (user.isLoggedIn) {
+      navigate("/dogForm");
+    } 
+  }, [user]);
 
   function handleChange(e) {
     setUploadDog({ ...uploadDog, [e.target.name]: e.target.value });
@@ -43,6 +41,7 @@ function AddDogForm({ users, dogs, setUpdate}) {
     })
       .then((r) => r.json())
       .then((data) => {
+        debugger
         setUploadDog({
           name: "",
           gender: "",
@@ -51,7 +50,6 @@ function AddDogForm({ users, dogs, setUpdate}) {
           vaccinated: "",
           img_url: "",
         })
-        setUpdate(true)
         setNewDog(false)
       });
   }
@@ -98,7 +96,7 @@ function AddDogForm({ users, dogs, setUpdate}) {
         <label>
           Name:
           <input
-            className="input-fields"
+            className="form-control"
             type="text"
             value={uploadDog.name}
             name="name"
@@ -109,7 +107,7 @@ function AddDogForm({ users, dogs, setUpdate}) {
         <label>
           Dob:
           <input
-            className="input-fields"
+            className="form-control"
             type="text"
             value={uploadDog.dob}
             name="dob"
@@ -120,7 +118,7 @@ function AddDogForm({ users, dogs, setUpdate}) {
         <label>
           Breed:
           <input
-            className="input-fields"
+            className="form-control"
             type="text"
             value={uploadDog.breed}
             name="breed"
@@ -131,7 +129,7 @@ function AddDogForm({ users, dogs, setUpdate}) {
         <label>
           Vaccinated:
           <input
-            className="input-fields"
+            className="form-control"
             type="text"
             value={uploadDog.vaccinated}
             onChange={handleChange}
@@ -142,7 +140,7 @@ function AddDogForm({ users, dogs, setUpdate}) {
         <label>
           Image:
           <input
-            className="input-fields"
+            className="form-control"
             onChange={handleChange}
             type="text"
             value={uploadDog.img_url}
@@ -153,7 +151,7 @@ function AddDogForm({ users, dogs, setUpdate}) {
         <label>
           Gender:
           <input
-            className="input-fields"
+            className="form-control"
             onChange={handleChange}
             type="text"
             value={uploadDog.gender}
