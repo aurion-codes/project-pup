@@ -9,6 +9,11 @@
   margin-bottom: 15px;
 }
 
+.about-us-container{
+    margin-top: 100px;
+
+}
+
 .about-us h3 {
   font-size: 25px;
   line-height: 31px;
@@ -19,4 +24,16 @@
   font-size: 18px;
   line-height: 24px;
   text-align: center;
+}
+
+.topheader{
+    height: 165px;
+    background-image: url("https://image.shutterstock.com/image-photo/group-cropped-view-dog-heads-260nw-134792603.jpg");
+    background-size: contain;
+    background-size: cover;
+
+
+
+  
+
 }

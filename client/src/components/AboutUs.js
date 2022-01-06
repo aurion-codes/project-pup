@@ -1,9 +1,11 @@
 import React from "react";
 import "./about-us.css";
+import bgImage from "../assets/auth-bg1.jpg"
 function AboutUs() {
   return (
+      <div className="topheader" >
     <div className="about-us">
-      <div className="container">
+      <div className="about-us-container" >
         <h1 className="main-title"> About us</h1>
         <h3>Every Paw gets a safe and happy home at Adopt a Paw</h3>
         <p>
@@ -22,6 +24,7 @@ function AboutUs() {
           facilisis luctus, metus
         </p>
       </div>
+    </div>
     </div>
   );
 }

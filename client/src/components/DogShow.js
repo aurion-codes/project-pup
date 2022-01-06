@@ -13,6 +13,11 @@ import { faHeart, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 function DogShow({ user, dogData, handleDeleteDog, handleEditDog }) {
   const [dog, setDog] = useState({details: dogData.details, reviews: dogData.reviews})
+  const [learnmore, setLearnMore] =useState(false)
+
+  function handleLearnMore(){
+    setLearnMore(!learnmore)
+  }
   
   const handleReviews = ()=>{
     fetch("/reviews", {

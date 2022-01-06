@@ -20,16 +20,18 @@
   background-position: center center;
 }
 .form-container {
-  max-width: 460px;
+  max-width:700px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.5);
   margin: auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   padding: 40px 20px;
   border-radius: 15px;
 }
 .addpup-container label {
+  font-size: 20px;
   width: 100%;
+  font-weight: bold;
 }
 .addpup-container input {
   margin-top: 15px;

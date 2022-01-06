@@ -1,7 +1,7 @@
 import { useState,useEffect} from 'react'
 import './Login.css'
 import { useNavigate } from "react-router-dom";
-import bgImage from "../assets/auth-bg.jpg";
+import bgImage from "../assets/auth-bg1.jpg";
 
     
 function Login({user, setUser, logout}) {
@@ -44,10 +44,11 @@ function Login({user, setUser, logout}) {
 
     
    <>
+   
   <div class="auth-wrapper" style={{backgroundImage:`url(${bgImage})`}}>
   <div className="form-container">
     
-     <form className="login-form">
+     <form className="login-form" logo="../logo.png" >
 
        <input className="form-field" type="text" placeholder='username' value={username} onChange={(e)=> setUsername(e.target.value)} />
       

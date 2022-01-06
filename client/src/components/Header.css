@@ -8,20 +8,47 @@
   background-color: #a000a0;
   padding-bottom: 0.5rem;
   padding: 15px 0;
-  background-color: #797979 !important;
+  background-color: #fcd5ce !important;
 }
 .navbar .navbar-brand {
   font-size: 25px;
   line-height: 32px;
-  font-weight: 700;
+  font-weight: bold;
   margin-right: 40px;
+  text-align: left;
 }
+
+.navLinks{
+    display: "inline-block";
+    width: "160px";
+    padding: "12px";
+    margin: "0 6px 6px";
+        text-decoration:"none";
+        color: "black";
+}
+
+.navLinks:hover{
+    text-decoration: underline;
+   color: rgb(0, 0, 0);
+   background-color: #ffb5a7;
+  }
+  
 .navbar a {
   font-size: 18px;
   line-height: 24px;
   font-weight: 500;
-  color: #fff !important;
   opacity: 1 !important;
+}
+
+#dogheader{
+    color: #925146;
+  font-size: 50px;
+  font-family: fantasy;
+  text-align: left;
+  padding-left: 20px;
+
+
+
 }
 .lg a:visited {
   color: blue;
@@ -38,7 +65,7 @@ a:hover {
 }
 
 a:visited {
-  color: #fff;
+  color: brown;
 }
 
 a {
