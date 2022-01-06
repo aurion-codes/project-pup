@@ -43,17 +43,20 @@ function DogShow({ user, dogData, handleDeleteDog, handleEditDog }) {
          <h1>{dog.details.name}</h1> 
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <h2>Gender:  {dog.details.gender}</h2>  
+          <h2>Breed:  {dog.details.breed}</h2>  
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <h2>Birthday: {dog.details.dob}</h2> 
+          <h3>Gender:  {dog.details.gender}</h3>  
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <h2>About Me:</h2> {dog.details.bio} 
+          <h3>Birthday: {dog.details.dob}</h3> 
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          <h3>About Me:</h3> {dog.details.bio} 
         </Typography>
         <br></br>
         <Typography variant="body2" color="text.secondary">
-        <h3>Vaccinated: {dog.details.vaccinated ? "yes" : "no"}</h3>
+        <h3>Adopted Status: {dog.details.adopted ? "Pending Adoption " : "Available"}</h3>
         </Typography>
        
       </CardContent>
