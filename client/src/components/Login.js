@@ -1,6 +1,7 @@
 import { useState,useEffect} from 'react'
 import './Login.css'
 import { useNavigate } from "react-router-dom";
+import bgImage from "../assets/auth-bg.jpg";
 
     
 function Login({user, setUser, logout}) {
@@ -43,17 +44,19 @@ function Login({user, setUser, logout}) {
 
     
    <>
-    <div className="form-container">
-     
-      <form className="login-form">
+  <div class="auth-wrapper" style={{backgroundImage:`url(${bgImage})`}}>
+  <div className="form-container">
+    
+     <form className="login-form">
 
-        <input className="form-field" type="text" placeholder='username' value={username} onChange={(e)=> setUsername(e.target.value)} />
-       
-        <input className="form-field" type="password" placeholder='password' value={password} onChange={(e)=> setPassword(e.target.value)} />
-       
-        <button type="button" className="form-field" onClick={()=>onLogin()}>Login</button> 
-      </form>
-    </div>
+       <input className="form-field" type="text" placeholder='username' value={username} onChange={(e)=> setUsername(e.target.value)} />
+      
+       <input className="form-field" type="password" placeholder='password' value={password} onChange={(e)=> setPassword(e.target.value)} />
+      
+       <button type="button" className="form-field" onClick={()=>onLogin()}>Login</button> 
+     </form>
+   </div>
+  </div>
   </>
   )
   

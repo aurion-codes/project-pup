@@ -7,21 +7,19 @@ import Login from "./Login";
 import DogsPage from "./DogsPage";
 import AddDogForm from "./AddDogForm";
 import Profile from "./Profile";
-import EditDogForm from "./EditDogForm"
+import EditDogForm from "./EditDogForm";
+
 function App() {
-  
+  const [user, setUser] = useState({ isLoggedIn: false, user: {} });
 
-  const [user, setUser] = useState({isLoggedIn: false, user: {}})
-  
   const handleLogin = (data) => {
-      setUser({
+    setUser({
       isLoggedIn: true,
-      user: data.user
-    })
-  }
-  
-  const handleLogout = () => {
+      user: data.user,
+    });
+  };
 
+  const handleLogout = () => {
     fetch("/logout", {
       method: "POST",
       headers: {
@@ -29,50 +27,48 @@ function App() {
       },
       credentials: "include",
     })
-    .then((r) => r.json())
-    .then((data) => {
-      if (data.logged_out) {
-        setUser({user: {}, isLoggedIn: false})
-      }
-    }) 
-    
-  }
-
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.logged_out) {
+          setUser({ user: {}, isLoggedIn: false });
+        }
+      });
+  };
 
   const loginStatus = () => {
-
-    fetch('/logged_in', 
-      {withCredentials: true})    
-    .then((r) => r.json())
-    .then((data) => {
-      if (data.logged_in) {
-        handleLogin(data)
-      } else {
-        handleLogout()
-      }
-    })
-    .catch(error => console.log('api errors:', error))
+    fetch("/logged_in", { withCredentials: true })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.logged_in) {
+          handleLogin(data);
+        } else {
+          handleLogout();
+        }
+      })
+      .catch((error) => console.log("api errors:", error));
   };
-  
-  useEffect(()=> loginStatus(),[setUser])
 
-  return ( 
+  useEffect(() => loginStatus(), [setUser]);
 
+  return (
     <>
-      <Header user={user} logout={handleLogout} setUser={setUser}/>
+      <Header user={user} logout={handleLogout} setUser={setUser} />
       <Routes>
         <Route path="/about" element={<AboutUs />} />
-        <Route path="/login" element={<Login user={user} setUser={setUser} logout={handleLogout}/>} />
-       
-        <Route path="/dogs" element={<DogsPage user={user}/>} />
-        <Route path="/dogForm" element={<AddDogForm user={user}  />} />
+        <Route
+          path="/login"
+          element={
+            <Login user={user} setUser={setUser} logout={handleLogout} />
+          }
+        />
+
+        <Route path="/dogs" element={<DogsPage user={user} />} />
+        <Route path="/dogForm" element={<AddDogForm user={user} />} />
         <Route path="/profile" element={<Profile user={user} />} />
-        <Route path="/editDog/:id" element={<EditDogForm user={user}/>} />
-         
+        <Route path="/editDog/:id" element={<EditDogForm user={user} />} />
       </Routes>
     </>
-
-  )
+  );
 }
 
-    export default App
+export default App;

@@ -1,5 +1,6 @@
 import {NavLink} from 'react-router-dom'
-import {Navbar, Nav, Container} from 'react-bootstrap'
+import {Navbar, Nav, Container} from 'react-bootstrap';
+
 function NavBar({user, logout, setUser}){
 
 
@@ -20,7 +21,7 @@ return (
      <Navbar bg="light" variant="light">
       <Container>
         <Navbar.Brand href="/dogs">Dogs</Navbar.Brand>
-        <Nav className="me-auto"> 
+        <Nav className="mx-auto"> 
           <Nav.Link href="/about"> About </Nav.Link>
           <Nav.Link href="/dogForm"> Add Dog </Nav.Link>
           

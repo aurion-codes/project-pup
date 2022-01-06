@@ -1,0 +1,100 @@
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  background-color: #a000a0;
+  padding-bottom: 0.5rem;
+  padding: 15px 0;
+  background-color: #797979 !important;
+}
+.navbar .navbar-brand {
+  font-size: 25px;
+  line-height: 32px;
+  font-weight: 700;
+  margin-right: 40px;
+}
+.navbar a {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+.lg a:visited {
+  color: blue;
+}
+.lg {
+  font-family: verdana;
+  font-size: 32px;
+  font-weight: bold;
+  color: blue;
+  margin-left: 20px;
+}
+a:hover {
+  color: #fff;
+}
+
+a:visited {
+  color: #fff;
+}
+
+a {
+  font-family: Helvetica, sans-serif;
+  text-decoration: none;
+}
+
+.md {
+  flex-grow: 1;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.body {
+  margin: 0;
+  padding: 0;
+}
+
+.md a {
+  padding: 0 10px;
+  font-family: verdana;
+  color: #ddd;
+  font-size: 18px;
+  /* font-weight: bold; */
+}
+
+.md a:visited {
+  color: #ddd;
+}
+
+.md a:hover {
+  color: white;
+}
+
+.side {
+  display: flex;
+}
+
+.side a,
+.side div {
+  margin: 0 10px;
+  border: 2px solid white;
+  color: white;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.side a :visited {
+  color: #ddd;
+}

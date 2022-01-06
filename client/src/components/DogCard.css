@@ -8,6 +8,8 @@
 
 body {
   font-family: "Playfair Display", serif;
+  margin: 0;
+  padding: 0;
 }
 
 h2 {
@@ -57,10 +59,9 @@ main {
 }
 
 .card .image {
-
-  height: 225px; 
+  height: 225px;
   position: relative;
- width: 300px;
+  width: 300px;
   display: flex;
   justify-content: center;
 }
@@ -75,10 +76,33 @@ main {
   border-bottom-right-radius: 5px;
   background: white;
 }
-
+.css-1xoxzr5-MuiPaper-root-MuiCard-root {
+  margin: 40px 15px !important;
+  max-width: calc(33% - 30px) !important;
+  width: 100%;
+}
+.card-page-wrapper .css-o69gx8-MuiCardMedia-root {
+  height: 225px !important;
+  border-radius: 18px 18px 0 0;
+}
+.card-page-wrapper .css-h93ljk-MuiTypography-root h1 {
+  font-size: 25px;
+  line-height: 28px;
+  text-align: left;
+}
+.card-page-wrapper .css-1xoxzr5-MuiPaper-root-MuiCard-root {
+  height: auto !important;
+  min-height: auto !important;
+}
+.card-page-wrapper .css-r40f8v-MuiTypography-root h2 {
+  font-size: 20px;
+  line-height: 28px;
+  text-align: left;
+}
 .card .image img {
-  max-width: 300px;
-  max-height: 225px;
+  max-width: 100%;
+  max-height: 180px;
+
   width: auto;
   height: auto;
 }

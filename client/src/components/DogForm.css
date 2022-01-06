@@ -1,69 +1,60 @@
-body {
-    background: whitesmoke;
-    justify-content: center;
-    align-items: center;
-    padding: 30px
-  }
 
-.addpup-container  {
-    border-radius: 15px;
-    width: 400px;
-    background-color: white;
-    margin: 50px auto;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    padding: 10px;
-    margin: 0px 20;
-  }
 
-  .dog-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding: 10px;
+.addpup-container {
+  border-radius: 15px;
+  width: 400px;
+  background-color: white;
+  margin: 50px auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  padding: 10px;
+  margin: 0px 20;
+}
 
-  }
-  
-  
-   .add-bttn  {
-     background: #4caf50;
-    color: white;
-    cursor: pointer;
-  }
+.dog-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px;
+}
 
-  .input-fields{
-    display:flex;
-    flex-direction: column ;
-    margin: 0px 6 0 6px;
-    padding: 10px;
-    font-size: 16px;
-    border: 0;
-    font-family: "Roboto", sans-serif;
-    
-      /* display:flex;
+.add-bttn {
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 6 0 6px;
+  padding: 10px;
+  font-size: 16px;
+  border: 0;
+  font-family: "Roboto", sans-serif;
+
+  /* display:flex;
       flex-direction: column;
       margin-right: 4%;
       font-size: 16px;
       height: 20px; */
-  }
+}
 
-  input {
-    background: #f2f2f2;
-  }
+input {
+  background: #f2f2f2;
+}
 
+button {
+  background: lightseagreen;
+  color: white;
+  cursor: pointer;
+}
 
-  button {
-    background: lightseagreen;
-    color: white;
-    cursor: pointer;
-    
-  }
-
-  button:disabled {
-    cursor: default;
-  }
-  h1{
-    text-align: center;
-  }
-  form{
-    align-items: center;
-  }
+button:disabled {
+  cursor: default;
+}
+h1 {
+  text-align: center;
+}
+form {
+  align-items: center;
+}
